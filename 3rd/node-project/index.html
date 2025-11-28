@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="addUser()">등록</button>
+    <button onclick="addBoard()">등록</button>
+    <script>
+      function addUser() {
+        fetch("http://localhost:3000/user", {
+          method: "post",
+          headers: { "Content-Type": "application/json;charset=utf-8" },
+          body: JSON.stringify({
+            id: "user05",
+            pw: "5555",
+            name: "이준호(5555)",
+          }),
+        })
+          .then((resp) => resp.text())
+          .then((result) => console.log(result))
+          .catch((err) => console.log(err));
+      }
+
+      function addBoard() {
+        fetch("http://localhost:3000/board", {
+          method: "post",
+          headers: { "Content-Type": "application/json;charset=utf-8" },
+          body: JSON.stringify({
+            board_id: "3333",
+            title: "제목입니다23.",
+            content: "내용입니다23.",
+            author: "조영진",
+          }),
+        });
+      }
+    </script>
+  </body>
+</html>
